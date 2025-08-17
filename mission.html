@@ -15,8 +15,9 @@
     --background: #f8f8f0; 
     --text-color: #1a1a1a; 
     --card-bg: #ffffff; 
-    --glow: 0 0 10px var(--primary), 0 0 20px var(--primary);
 }
+
+/* Body */
 body {
     margin: 0;
     padding: 0;
@@ -24,6 +25,8 @@ body {
     background-color: var(--background);
     color: var(--text-color);
 }
+
+/* Floating Elements */
 .floating-element {
     position: absolute;
     animation: float 6s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
@@ -38,30 +41,34 @@ body {
     50% { text-shadow: 0 0 25px var(--primary), 0 0 40px var(--primary); }
     100% { text-shadow: 0 0 10px rgba(0,0,0,0.1); }
 }
-/* ===== Navbar ===== */
+
+/* ===== Navbar (Mission style dark glowing) ===== */
 .nav {
     position: fixed;
     width: 100%;
     background: #000;
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 0.5rem; /* keeps same size as before */
 }
 .nav-logo {
-    color: #fff;
+    font-family: 'Glegoo', serif;
+    color: var(--primary);
+    font-size: 1.5rem; /* same size as original logo */
     font-weight: 900;
-    font-size: 1.5rem;
     text-decoration: none;
+    text-shadow: 0 0 10px var(--primary);
 }
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
+    margin: 0;
 }
 .nav-links a {
     color: #fff;
@@ -71,16 +78,19 @@ body {
 }
 .nav-links a:hover {
     color: var(--primary);
+    text-shadow: 0 0 8px var(--primary);
 }
-/* ===== Section Titles ===== */
+
+/* Section Titles */
 .section-title {
-    font-size: 2.7rem; /* slightly bigger */
+    font-size: 2.7rem; 
     text-align: center;
     margin-bottom: 2rem;
     color: var(--text-color);
     text-shadow: 0 0 5px var(--primary);
 }
-/* ===== Cards ===== */
+
+/* Cards */
 .card {
     background-color: var(--card-bg);
     padding: 1.5rem;
@@ -125,15 +135,18 @@ img {
 }
 .mb-8 { margin-bottom: 2rem; }
 .section { padding: 2rem; }
+
 </style>
 </head>
 <body>
+
 <div class="background">
     <div class="floating-element" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(0, 191, 255, 0.3);">☮</div>
     <div class="floating-element" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(132, 204, 22, 0.3);">🕊</div>
     <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
 </div>
 
+<!-- Navbar -->
 <nav class="nav">
     <div class="nav-container">
         <a href="index.html" class="nav-logo">Voice for Peace</a>
@@ -151,7 +164,6 @@ img {
 
 <section class="section" style="padding-top: 8rem;">
     <h1 class="section-title">Our Mission</h1>
-
     <div class="card mb-8">
         <h2>Building a World Where Peace Prevails</h2>
         <p>Our mission is to create sustainable peace through education, dialogue, and community action. We believe that lasting peace begins with understanding, grows through compassion, and flourishes through collective action.</p>
@@ -159,7 +171,6 @@ img {
         <img src="00015.png" alt="Team working for peace">
         <p>We also organize workshops and training sessions across communities to educate young leaders, teachers, and local advocates about the principles of peaceful living and collaborative problem solving.</p>
     </div>
-
     <div class="grid grid-2 mb-8">
         <div class="card">
             <h3>Our Vision</h3>
@@ -181,7 +192,6 @@ img {
             <p>These values guide every project and initiative we undertake, ensuring that all actions align with our mission for sustainable peace and social impact.</p>
         </div>
     </div>
-
     <div class="section mb-8">
         <h2 class="section-title">Strategic Goals</h2>
         <div class="grid grid-3">
@@ -199,7 +209,6 @@ img {
             </div>
         </div>
     </div>
-
     <div class="section mb-8">
         <h2 class="section-title">Programs & Initiatives</h2>
         <div class="grid grid-2">
@@ -213,7 +222,6 @@ img {
             </div>
         </div>
     </div>
-
     <div class="section mb-8">
         <h2 class="section-title">Global Outreach & Partnerships</h2>
         <div class="card">
@@ -222,7 +230,7 @@ img {
             <p>Through partnerships with schools, NGOs, and community groups, we aim to scale up impact, reaching more people with tools and insights for constructive dialogue and empathy building.</p>
         </div>
     </div>
-
 </section>
+
 </body>
 </html>
