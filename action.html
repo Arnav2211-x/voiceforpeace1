@@ -33,39 +33,46 @@ canvas#rainCanvas {
     pointer-events: none;
     z-index: 0;
 }
+
+/* ===== Navbar from Mission page ===== */
 .nav {
     position: fixed;
     width: 100%;
-    background: #000;
+    background: linear-gradient(90deg, #000, #111);
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
 }
 .nav-logo {
-    color: #fff;
+    color: #00bfff;
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-decoration: none;
+    text-shadow: 0 0 10px #00bfff;
 }
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    margin: 0;
 }
 .nav-links a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    transition: 0.3s;
 }
 .nav-links a:hover {
     color: var(--primary);
 }
+
+/* ===== Sections & Cards ===== */
 .section-title {
     font-size: 2.5rem;
     text-align: center;
@@ -204,10 +211,8 @@ iframe {
         <h2 class="section-title">Learn Online</h2>
         <iframe src="https://globalpeacecareers.com/magazine/what-is-peace/" title="Virtual Peace Class"></iframe>
         <iframe src="https://en.wikipedia.org/wiki/Peace" title="Peace Webinar"></iframe>
-        <!-- YouTube iframe is not interactive for buttons -->
-        <iframe src="https://www.youtube.com/embed/diJrDLrKDX4?si=rLMc1hrEFuuxaX6t" title="Peace Workshop Video" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/diJrDLrKDX4?si=rLMc1hrEFuuxaX6tw" title="Peace Workshop Video" allowfullscreen></iframe>
     </div>
-
 </section>
 
 <script>
@@ -229,7 +234,7 @@ for(let i=0; i<200; i++) {
 
 function draw() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = 'rgba(0,255,128,0.6)'; // green rain
+    ctx.strokeStyle = 'rgba(0,255,128,0.6)';
     drops.forEach(d => {
         ctx.beginPath();
         ctx.moveTo(d.x,d.y);
