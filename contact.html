@@ -9,6 +9,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <style>
+        /* ===== Navbar (Mission style dark glowing) ===== */
+        .nav {
+            position: fixed;
+            width: 100%;
+            background: #000;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        .nav-logo {
+            font-family: 'Glegoo', serif;
+            color: #00bfff;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-shadow: 0 0 10px #00bfff;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #00bfff;
+            text-shadow: 0 0 8px #00bfff;
+        }
+    </style>
 </head>
 <body>
     <div class="background">
@@ -17,6 +57,7 @@
         <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
     </div>
 
+    <!-- Updated Navbar -->
     <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Voice for Peace</a>
@@ -39,12 +80,12 @@
             <div class="card">
                 <h3>Contact Information</h3>
                 <div style="margin: 2rem 0;">
-                    <p style="margin-bottom: 1rem;"><strong>📧 Email:</strong> siddesh25jain@gmail.com</p>
+                    <p style="margin-bottom: 1rem;"><strong>📧 Email:</strong> siddesh.jain@gmail.com</p>
                     <p style="margin-bottom: 1rem;"><strong>📞 Phone:</strong> +91 6265376721</p>
                     <p style="margin-bottom: 1rem;"><strong>📍 Address:</strong> Neelbad, Bhopal, Billabong</p>
                 </div>
                 
-                <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Timings for responding</h4>
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Office Hours</h4>
                 <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                 <p>Saturday: 10:00 AM - 4:00 PM</p>
                 <p>Sunday: Closed</p>
