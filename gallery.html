@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Voice for Peace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --foreground: #000000;
+    --primary: #00ffff;
+    --secondary: #84cc16;
+    --font-glegoo: "Glegoo", serif;
+    --font-open-sans: "Open Sans", sans-serif;
+}
+
+body {
+    font-family: var(--font-open-sans);
+    margin: 0;
+    padding: 0;
+    color: var(--foreground);
+    background: url('https://images.unsplash.com/photo-1602524811255-3c53b2c8e2e4?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex; justify-content: center;
+    z-index: 100;
+}
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    font-family: var(--font-glegoo);
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--primary);
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+}
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+}
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* Floating elements */
+.background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.floating-element {
+    position: absolute;
+    font-size: 3rem;
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Section */
+.section {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    text-align: center;
+    backdrop-filter: brightness(0.85);
+    color: var(--foreground);
+}
+.section-title {
+    font-family: var(--font-glegoo);
+    font-size: 3rem;
+    color: var(--foreground);
+    text-shadow: 0 0 15px var(--primary), 0 0 25px var(--secondary);
+    margin-bottom: 2rem;
+}
+
+/* Grid & Cards */
+.grid {
+    display: grid;
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+}
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.card img {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+.card-content {
+    padding: 1rem;
+}
+.card-content h3 {
+    font-family: var(--font-glegoo);
+    color: var(--foreground);
+    font-size: 1.3rem;
+    text-shadow: 0 0 5px var(--primary);
+    margin-bottom: 0.5rem;
+}
+.card-content p {
+    font-size: 0.95rem;
+    color: var(--foreground);
+}
+
+/* Smooth scroll reveal */
+.card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Video Section */
+.video-section {
+    margin-top: 4rem;
+}
+.video-section h2 {
+    font-family: var(--font-glegoo);
+    font-size: 2.5rem;
+    color: var(--foreground);
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    margin-bottom: 2rem;
+}
+.videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+.videos iframe {
+    width: 560px;
+    max-width: 90%;
+    height: 315px;
+    border: 4px solid var(--primary);
+    border-radius: 12px;
+    box-shadow: 0 0 20px var(--primary);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.videos iframe:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--secondary);
+}
+</style>
+</head>
+<body>
+
+<!-- Falling speaking emojis canvas -->
+<canvas id="emojiCanvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></canvas>
+
+<div class="background">
+    <div class="floating-element" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(0, 255, 255, 0.2);">☮</div>
+    <div class="floating-element" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(132, 204, 22, 0.3);">🕊</div>
+    <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
+</div>
+
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Voice for Peace</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="action.html">Take Action</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section">
+    <h1 class="section-title">Peace Stories Gallery</h1>
+    <div class="grid grid-3">
+        <div class="card"><img src="0009.png" alt="Bosnia peace initiative"><div class="card-content"><h3>Healing in Bosnia</h3><p>Former enemies work together to build bridges, showing that reconciliation is possible.</p></div></div>
+        <div class="card"><img src="0007.png" alt="Youth peace program"><div class="card-content"><h3>Youth Peace Leaders</h3><p>Young people unite to create peace education programs in schools and communities.</p></div></div>
+        <div class="card"><img src="0006.png" alt="Interfaith dialogue"><div class="card-content"><h3>Interfaith Harmony</h3><p>Religious leaders collaborate to promote understanding and cooperation.</p></div></div>
+        <div class="card"><img src="0005.png" alt="Peace education"><div class="card-content"><h3>Education for Peace</h3><p>Teachers integrate peace education into their curriculum, nurturing future peacemakers.</p></div></div>
+        <div class="card"><img src="0008.png" alt="Art for peace"><div class="card-content"><h3>Art as Bridge</h3><p>Artists use creativity to express messages of peace and bring communities together.</p></div></div>
+        <div class="card"><img src="0003.png" alt="Digital peace"><div class="card-content"><h3>Digital Peace</h3><p>Online platforms connect peace advocates worldwide, creating a global network of change-makers.</p></div></div>
+    </div>
+</section>
+
+<section class="section video-section">
+    <h2>Peace in Action Videos</h2>
+    <div class="videos">
+        <iframe src="https://www.youtube.com/embed/2OEL4P1Rz04" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/sm0i1Y4g_zA?si=lx3VFkccvMS8RPeE" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/DFwG9lNz0cU" frameborder="0" allowfullscreen></iframe>
+    </div>
+</section>
+
+<script>
+    // Reveal cards on scroll
+    const cards = document.querySelectorAll('.card');
+    const revealCards = () => {
+        const windowHeight = window.innerHeight;
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < windowHeight - 100) card.classList.add('visible');
+        });
+    };
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('load', revealCards);
+
+    // Falling speaking emojis effect
+    const canvas = document.getElementById('emojiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const emojis = [];
+    for(let i=0; i<50; i++){
+        emojis.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            size: Math.random()*30+20,
+            speed: Math.random()*1 + 0.5,
+            alpha: Math.random()*0.6+0.4
+        });
+    }
+
+    function drawEmojis(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        emojis.forEach(e => {
+            ctx.font = `${e.size}px Arial`;
+            ctx.fillStyle = `rgba(0,255,255,${e.alpha})`;
+            ctx.fillText('🌱', e.x, e.y);
+            ctx.fillText('', e.x, e.y);
+
+            e.y += e.speed;
+            if(e.y > canvas.height + 50) e.y = -50;
+        });
+        requestAnimationFrame(drawEmojis);
+    }
+    drawEmojis();
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+</script>
+
+</body>
+</html>

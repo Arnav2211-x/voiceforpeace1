@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Voice for Peace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+</head>
+<body>
+    <div class="background">
+        <div class="floating-element" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(0, 255, 255, 0.2);">☮</div>
+        <div class="floating-element" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(132, 204, 22, 0.3);">🕊</div>
+        <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Voice for Peace</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="action.html">Take Action</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section" style="padding-top: 8rem;">
+        <h1 class="section-title">Get in Touch</h1>
+        
+        <div class="grid grid-2">
+            <div class="card">
+                <h3>Contact Information</h3>
+                <div style="margin: 2rem 0;">
+                    <p style="margin-bottom: 1rem;"><strong>📧 Email:</strong> siddesh.jain@gmail.com</p>
+                    <p style="margin-bottom: 1rem;"><strong>📞 Phone:</strong> +91 6265376721</p>
+                    <p style="margin-bottom: 1rem;"><strong>📍 Address:</strong> Neelbad, Bhopal, Billabong</p>
+                </div>
+                
+                <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Office Hours</h4>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+            
+            <div class="card">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="from_name">Name *</label>
+                        <input type="text" id="from_name" name="from_name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="from_email">Email *</label>
+                        <input type="email" id="from_email" name="from_email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject *</label>
+                        <select id="subject" name="subject" class="form-select" required>
+                            <option value="">Select a topic</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Partnership Opportunity">Partnership Opportunity</option>
+                            <option value="Volunteer Application">Volunteer Application</option>
+                            <option value="Media Request">Media Request</option>
+                            <option value="Workshop Registration">Workshop Registration</option>
+                            <option value="Feedback">Feedback</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message *</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Please share your message, questions, or how you'd like to get involved with Voice for Peace..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // EmailJS initialization
+        emailjs.init("31QbCqc3Pwl5WklLF");
+
+        function sendEmail(e) {
+            e.preventDefault();
+            
+            // First Email
+            emailjs.sendForm('service_es6nhj8', 'template_6ryz0xt', e.target)
+                .then(() => {
+                    alert("📨 Form submitted! Check your email.");
+                }, (err) => {
+                    alert("❌ Failed: " + err.text);
+                });
+            
+            // Admin Notification
+            emailjs.sendForm('service_ol4hoea', 'template_dydlwjq', e.target)
+                .then(() => {
+                    alert("📨 Message sent successfully. You will receive confirmation soon.");
+                    e.target.reset();
+                }, (err) => {
+                    alert("❌ Failed to notify admin:\n" + err.text);
+                });
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', sendEmail);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice for Peace - Workshops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-color: #f0f0f3;
+    --card-bg: #ffffff;
+    --primary: #0071e3;
+    --font-color: #1d1d1f;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    padding: 1rem 2rem;
+}
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    font-family: 'Glegoo', serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+.nav-links a {
+    color: var(--font-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Section */
+.section {
+    padding: 8rem 2rem 4rem 2rem;
+    text-align: center;
+}
+
+/* Glowing heading effect */
+.section-title {
+    font-family: 'Glegoo', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--primary);
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ff84,
+        0 0 15px #00ffff,
+        0 0 20px #00ff84,
+        0 0 25px #00ffff,
+        0 0 30px #00ff84;
+}
+
+/* Workshop Grid */
+.workshop-grid {
+    display: grid;
+    grid-template-areas: 
+        "corner1 center corner2"
+        "corner3 center corner4";
+    grid-gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.workshop-item {
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border: 2px solid #000;
+    overflow: hidden;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+.workshop-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+.workshop-item::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: radial-gradient(circle, rgba(0,113,227,0.2) 0%, rgba(0,255,132,0.15) 70%, transparent 100%);
+    border-radius: 25px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: -1;
+}
+.workshop-item:hover::before {
+    opacity: 1;
+    transform: scale(1.05);
+}
+.workshop-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+.workshop-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--font-color);
+}
+.workshop-item p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--primary);
+    color: #fff;
+    transition: background 0.3s, transform 0.2s;
+}
+.btn:hover {
+    background: #005bb5;
+    transform: translateY(-2px);
+}
+
+/* Grid areas */
+#center { grid-area: center; }
+#corner1 { grid-area: corner1; }
+#corner2 { grid-area: corner2; }
+#corner3 { grid-area: corner3; }
+#corner4 { grid-area: corner4; }
+
+/* Falling Books Background */
+.background-books {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.falling-book {
+    position: fixed;
+    font-size: 20px;
+    z-index: 0;
+    opacity: 0.7;
+    transform-origin: center;
+}
+</style>
+</head>
+<body>
+
+<!-- Falling Books Background -->
+<div class="background-books"></div>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo">Voice for Peace</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="mission.html">Mission</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="resources.html">Resources</a>
+            <a href="action.html">Take Action</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="section">
+    <h1 class="section-title">Peace Workshops & Resources</h1>
+    <div class="workshop-grid">
+        <div class="workshop-item" id="center">
+            <h3>Leadership Workshop (Center)</h3>
+            <img src="00010.png" alt="Leadership Workshop">
+            <p>Enhance your leadership skills with exercises on teamwork, decision-making, and community impact.</p>
+            <button class="btn" onclick="downloadWorkshop('leadership')">Download Workshop Kit</button>
+        </div>
+        <div class="workshop-item" id="corner1">
+            <h3>Conflict Resolution</h3>
+            <img src="00012.png" alt="Conflict Resolution Workshop">
+            <p>Learn practical strategies to resolve conflicts peacefully. Participate in role-playing exercises and real-life scenarios to handle disputes.</p>
+            <button class="btn" onclick="downloadWorkshop('conflict')">Download Workshop Kit</button>
+        </div>
+        <div class="workshop-item" id="corner2">
+            <h3>Empathy Building</h3>
+            <img src="00011.png" alt="Empathy Workshop">
+            <p>Develop emotional intelligence and understanding through guided exercises. Learn active listening and communication skills that foster empathy.</p>
+            <button class="btn" onclick="downloadWorkshop('empathy')">Download Workshop Kit</button>
+        </div>
+        <div class="workshop-item" id="corner3">
+            <h3>Dialogue Facilitation</h3>
+            <img src="00013.png" alt="Dialogue Facilitation Workshop">
+            <p>Master the art of facilitating meaningful conversations. Learn techniques for moderating group discussions and encouraging productive dialogue.</p>
+            <button class="btn" onclick="downloadWorkshop('dialogue')">Download Workshop Kit</button>
+        </div>
+        <div class="workshop-item" id="corner4">
+            <h3>Peace Education</h3>
+            <img src="00014.png" alt="Peace Education Workshop">
+            <p>Explore mindfulness and educational activities to promote peace. Ideal for teachers, parents, and youth leaders seeking to build peaceful environments.</p>
+            <button class="btn" onclick="downloadWorkshop('peace')">Download Workshop Kit</button>
+        </div>
+    </div>
+</section>
+
+<script>
+// Falling books effect
+const background = document.querySelector('.background-books');
+const numBooks = 25;
+const books = [];
+
+for (let i = 0; i < numBooks; i++) {
+    const book = document.createElement('div');
+    book.textContent = '📚';
+    book.style.fontSize = Math.random() * 30 + 20 + 'px';
+    book.style.left = Math.random() * 100 + 'vw';
+    book.style.top = Math.random() * -100 + 'vh';
+    book.style.opacity = Math.random() * 0.7 + 0.3;
+    book.rotation = Math.random() * 360;
+    book.speed = Math.random() * 2 + 1;
+    book.swing = Math.random() * 0.5 + 0.2;
+    background.appendChild(book);
+    books.push(book);
+}
+
+function animateBooks() {
+    books.forEach(book => {
+        let top = parseFloat(book.style.top);
+        let left = parseFloat(book.style.left);
+        book.rotation += book.swing;
+        top += book.speed;
+        if (top > window.innerHeight) {
+            top = -50;
+            left = Math.random() * 100;
+        }
+        book.style.top = top + 'px';
+        book.style.left = left + 'vw';
+        book.style.transform = `rotate(${book.rotation}deg)`;
+    });
+    requestAnimationFrame(animateBooks);
+}
+animateBooks();
+
+// Workshop download function
+function downloadWorkshop(type){
+    let content = '';
+    let filename = '';
+    switch(type){
+        case 'leadership':
+            content = 'Leadership Workshop Kit\n1. Leadership Skills\n2. Team Building\n3. Conflict Resolution\nPrice: ₹500';
+            filename = 'leadership-workshop.txt';
+            break;
+        case 'conflict':
+            content = 'Conflict Resolution Workshop Kit\n1. Introduction\n2. Exercises\n3. Case Studies\nPrice: ₹500';
+            filename = 'conflict-workshop.txt';
+            break;
+        case 'empathy':
+            content = 'Empathy Workshop Kit\n1. Active Listening Exercises\n2. Perspective Taking Activities\n3. Emotional Intelligence Activities\nPrice: ₹500';
+            filename = 'empathy-workshop.txt';
+            break;
+        case 'dialogue':
+            content = 'Dialogue Facilitation Workshop Kit\n1. Group Discussions\n2. Managing Conversations\n3. Debriefing Questions\nPrice: ₹500';
+            filename = 'dialogue-workshop.txt';
+            break;
+        case 'peace':
+            content = 'Peace Education Workshop Kit\n1. Mindfulness Exercises\n2. Classroom Activities\n3. Reflection Prompts\nPrice: ₹500';
+            filename = 'peace-education-workshop.txt';
+            break;
+    }
+    const blob = new Blob([content], {type:'text/plain'});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    alert('Workshop downloaded successfully!');
+}
+</script>
+
+</body>
+</html>

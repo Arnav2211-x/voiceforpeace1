@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Voice for Peace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --background: #fdfdf9;   /* off-white */
+    --text: #000000;          /* black font */
+    --primary: #00ffff;       /* aqua glow */
+    --secondary: #228B22;     /* forest green */
+    --font-glegoo: "Glegoo", serif;
+    --font-open-sans: "Open Sans", sans-serif;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-open-sans);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Floating background icons */
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -2;
+}
+.floating-element {
+    position: absolute;
+    animation: float 6s infinite ease-in-out;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Navbar */
+.nav {
+    background: rgba(253,253,249,0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    font-family: var(--font-glegoo);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text);
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    text-decoration: none;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.nav-links a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary), 0 0 15px var(--secondary);
+}
+
+/* Sections */
+.section {
+    padding: 6rem 2rem 3rem;
+    max-width: 1100px;
+    margin: auto;
+}
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-glegoo);
+    text-shadow: 0 0 8px var(--primary), 0 0 12px var(--secondary);
+}
+
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+}
+.card h2, .card h3 {
+    margin-top: 0;
+    font-family: var(--font-glegoo);
+    color: var(--text);
+    text-shadow: 0 0 6px var(--primary), 0 0 10px var(--secondary);
+}
+.card p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+.text-center { text-align: center; }
+
+/* CTA Buttons */
+.cta {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.cta h2 {
+    font-size: 2rem;
+    font-family: var(--font-glegoo);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 8px var(--primary), 0 0 12px var(--secondary);
+}
+.cta p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.cta-buttons a {
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.btn-primary {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 12px rgba(0,255,255,0.6);
+}
+.btn-primary:hover {
+    background: #00e6e6;
+    box-shadow: 0 0 20px rgba(0,255,255,0.9);
+}
+.btn-secondary {
+    border: 2px solid #000;
+    color: #000;
+    background: transparent;
+}
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    text-shadow: 0 0 8px var(--primary);
+}
+</style>
+</head>
+<body>
+
+<!-- Rain particles canvas -->
+<canvas id="particleCanvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></canvas>
+
+<!-- Floating icons -->
+<div class="background">
+    <div class="floating-element" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(34,139,34,0.2);">☮</div>
+    <div class="floating-element" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(34,139,34,0.3);">🕊</div>
+    <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(34,139,34,0.25);">🌍</div>
+</div>
+
+<!-- Navbar -->
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Voice for Peace</a>
+        <ul class="nav-links">
+            <li><a href="index.html">home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="mission.html">mission</a></li>
+            <li><a href="gallery.html">gallery</a></li>
+            <li><a href="resources.html">resources</a></li>
+            <li><a href="action.html">take action</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section">
+    <h1 class="section-title">About Voice for Peace</h1>
+    
+    <div class="grid grid-2 mb-8">
+        <div class="card">
+            <h2>Our Story</h2>
+            <p>Voice for Peace was born from a simple yet powerful belief: that every individual has the capacity to contribute to a more peaceful world. Founded in 2020, our movement has grown from a small group of passionate advocates to a global community of peace builders.</p>
+            <p>We believe that peace is not just the absence of conflict, but the presence of justice, understanding, and compassion in our communities and relationships.</p>
+        </div>
+        <div class="card">
+            <img src="0002.jpg" alt="Our story" style="width: 100%; height: 250px; object-fit: cover; border-radius: 0.5rem;">
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="section">
+        <h2 class="section-title">Our Team</h2>
+        <div class="grid grid-3">
+            <div class="card text-center">
+                <img src="team-sarah.png" alt="Sarah Johnson" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Sarah Johnson</h3>
+                <p><strong>Founder & Director</strong></p>
+                <p>Former UN peacekeeper with 15 years of experience in conflict resolution and community building.</p>
+            </div>
+            <div class="card text-center">
+                <img src="team-marcus.png" alt="Marcus Chen" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Marcus Chen</h3>
+                <p><strong>Program Coordinator</strong></p>
+                <p>Educational specialist focused on peace curriculum development and youth engagement programs.</p>
+            </div>
+            <div class="card text-center">
+                <img src="team-priya.png" alt="Priya Patel" style="width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 1rem;">
+                <h3>Priya Patel</h3>
+                <p><strong>Community Outreach</strong></p>
+                <p>Grassroots organizer with expertise in building bridges between diverse communities worldwide.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Our Team CTA -->
+    <div class="cta">
+        <h2>Join Our Team</h2>
+        <p>Passionate about creating peace? Be part of a dedicated group working to make a global difference. Join our team and help shape a more united and compassionate world.</p>
+        <div class="cta-buttons">
+            <a href="action.html" class="btn-primary">Get Involved</a>
+            <a href="contact.html" class="btn-secondary">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<script>
+// Canvas setup
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Create rain particles
+let particles = [];
+for(let i = 0; i < 120; i++){
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 4 + 2,
+        speedY: Math.random() * 0.6 + 0.3,
+        alpha: Math.random() * 0.5 + 0.5
+    });
+}
+
+// Draw particles
+function drawParticles(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(34,139,34,${p.alpha})`;
+        ctx.fill();
+        p.y -= p.speedY;
+        if(p.y < 0) p.y = canvas.height;
+    });
+    requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// Floating symbols
+const symbols = [
+    {char: '☮', x: 100, y: 200, size: 40, speed: 0.4},
+    {char: '🕊', x: 400, y: 600, size: 35, speed: 0.3},
+    {char: '🌍', x: 700, y: 400, size: 45, speed: 0.2}
+];
+
+function drawSymbols() {
+    symbols.forEach(s => {
+        ctx.font = `${s.size}px Arial`;
+        ctx.fillStyle = `rgba(34,139,34,0.3)`;
+        ctx.fillText(s.char, s.x, s.y);
+        s.y -= s.speed;
+        if(s.y < -50) s.y = canvas.height + 50;
+    });
+    requestAnimationFrame(drawSymbols);
+}
+drawSymbols();
+
+// Resize
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>

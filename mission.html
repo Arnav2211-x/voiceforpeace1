@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission - Voice for Peace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary: #00bfff;  
+    --secondary: #84cc16; 
+    --tertiary: #3b82f6;  
+    --background: #f8f8f0; 
+    --text-color: #1a1a1a; 
+    --card-bg: #ffffff; 
+    --glow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Open Sans', sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+}
+.floating-element {
+    position: absolute;
+    animation: float 6s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    50% { text-shadow: 0 0 25px var(--primary), 0 0 40px var(--primary); }
+    100% { text-shadow: 0 0 10px rgba(0,0,0,0.1); }
+}
+/* ===== Navbar ===== */
+.nav {
+    position: fixed;
+    width: 100%;
+    background: #000;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+.nav-logo {
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.nav-links a:hover {
+    color: var(--primary);
+}
+/* ===== Section Titles ===== */
+.section-title {
+    font-size: 2.7rem; /* slightly bigger */
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    text-shadow: 0 0 5px var(--primary);
+}
+/* ===== Cards ===== */
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0,191,255,0.3);
+    transition: all 0.3s ease;
+}
+.card:hover {
+    box-shadow: 0 0 25px var(--primary), 0 0 50px var(--primary);
+}
+.card h2, .card h3, .card h4 {
+    color: var(--text-color);
+    text-shadow: 0 0 5px var(--primary);
+}
+.card h2 { font-size: 2rem; }
+.card h3 { font-size: 1.6rem; }
+.card h4 { font-size: 1.4rem; }
+.grid {
+    display: grid;
+    gap: 2rem;
+}
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+p, li {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+.card img:first-of-type {
+    max-width: 60%;
+    display: block;
+    margin: 1rem auto;
+}
+.mb-8 { margin-bottom: 2rem; }
+.section { padding: 2rem; }
+</style>
+</head>
+<body>
+<div class="background">
+    <div class="floating-element" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(0, 191, 255, 0.3);">☮</div>
+    <div class="floating-element" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(132, 204, 22, 0.3);">🕊</div>
+    <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
+</div>
+
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Voice for Peace</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="action.html">Take Action</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section" style="padding-top: 8rem;">
+    <h1 class="section-title">Our Mission</h1>
+
+    <div class="card mb-8">
+        <h2>Building a World Where Peace Prevails</h2>
+        <p>Our mission is to create sustainable peace through education, dialogue, and community action. We believe that lasting peace begins with understanding, grows through compassion, and flourishes through collective action.</p>
+        <p>Through innovative programs, we aim to equip individuals and communities with the tools to resolve conflicts, promote empathy, and foster cooperation in daily life. Every initiative is designed to make peace a practical, achievable reality.</p>
+        <img src="00015.png" alt="Team working for peace">
+        <p>We also organize workshops and training sessions across communities to educate young leaders, teachers, and local advocates about the principles of peaceful living and collaborative problem solving.</p>
+    </div>
+
+    <div class="grid grid-2 mb-8">
+        <div class="card">
+            <h3>Our Vision</h3>
+            <p>A world where conflicts are resolved through dialogue, diversity is celebrated, and every voice contributes to a culture of understanding. Communities are empowered to take peaceful action and nurture compassion in every interaction.</p>
+            <p>We envision a global network where knowledge-sharing and cooperation eliminate barriers and unite people in the pursuit of harmony and shared prosperity.</p>
+            <img src="0003.png" alt="Vision for peace">
+        </div>
+        <div class="card">
+            <h3>Our Values</h3>
+            <ul>
+                <li>Compassion and Empathy</li>
+                <li>Inclusive Dialogue</li>
+                <li>Cultural Understanding</li>
+                <li>Non-violent Resolution</li>
+                <li>Community Empowerment</li>
+                <li>Respect for Human Rights</li>
+                <li>Environmental Responsibility</li>
+            </ul>
+            <p>These values guide every project and initiative we undertake, ensuring that all actions align with our mission for sustainable peace and social impact.</p>
+        </div>
+    </div>
+
+    <div class="section mb-8">
+        <h2 class="section-title">Strategic Goals</h2>
+        <div class="grid grid-3">
+            <div class="card">
+                <h4>Education & Awareness</h4>
+                <p>Develop comprehensive peace education programs that reach schools, communities, and organizations worldwide. This includes workshops, seminars, and interactive learning sessions that inspire future leaders.</p>
+            </div>
+            <div class="card">
+                <h4>Community Building</h4>
+                <p>Foster local peace initiatives and connect communities across cultural and geographical boundaries. Support grassroots efforts that promote cooperation, volunteerism, and intercultural understanding.</p>
+            </div>
+            <div class="card">
+                <h4>Policy Advocacy</h4>
+                <p>Influence policy makers to prioritize peaceful solutions and invest in conflict prevention. Engage in research, dialogues, and collaborations with government and civil organizations to implement effective peace strategies.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section mb-8">
+        <h2 class="section-title">Programs & Initiatives</h2>
+        <div class="grid grid-2">
+            <div class="card">
+                <h4>Youth Leadership</h4>
+                <p>Empower young people with leadership skills that promote peace and social responsibility. Workshops, mentorship programs, and collaborative projects help youth become agents of positive change in their communities.</p>
+            </div>
+            <div class="card">
+                <h4>Conflict Mediation</h4>
+                <p>Provide training and support for conflict mediation at schools, workplaces, and community centers. Equip individuals with practical tools for resolving disputes constructively and preventing escalation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section mb-8">
+        <h2 class="section-title">Global Outreach & Partnerships</h2>
+        <div class="card">
+            <p>Engage with international partners and organizations to share knowledge, resources, and best practices in peacebuilding. Participate in cross-border collaborations and digital initiatives to promote global understanding.</p>
+            <p>Our online platform provides access to e-learning, webinars, and virtual events connecting participants from diverse backgrounds to learn and work together for a peaceful world.</p>
+            <p>Through partnerships with schools, NGOs, and community groups, we aim to scale up impact, reaching more people with tools and insights for constructive dialogue and empathy building.</p>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

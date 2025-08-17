@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice for Peace - Unite for a Better World</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --background: #000000;
+      --foreground: #ffffff;
+      --primary: #00ffff;
+      --secondary: #84cc16;
+      --font-glegoo: "Glegoo", serif;
+      --font-open-sans: "Open Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--font-open-sans);
+      margin: 0;
+      padding: 0;
+      color: var(--foreground);
+    }
+
+    /* Navbar */
+    .navigation {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 100;
+    }
+
+    .nav-logo { color: var(--primary); font-family: var(--font-glegoo); font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px var(--primary); }
+    .nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; }
+    .nav-links a { color: var(--foreground); text-decoration: none; transition: color 0.3s; font-size: 0.9rem; text-transform: lowercase; }
+    .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      position: relative;
+      background: url("00028.png") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: #000000;
+      top: 30%; /* moved up a bit */
+      transform: translateY(-35%);
+      transition: transform 0.3s, font-size 0.4s;
+    }
+
+    .hero-title { 
+      font-family: var(--font-glegoo); 
+      font-size: 4rem; 
+      font-weight: bold; 
+      text-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary); 
+      transition: font-size 0.3s, letter-spacing 0.3s, transform 0.3s;
+    }
+    .hero-subtitle { 
+      font-size: 1.35rem; 
+      margin: 1rem auto; 
+      max-width: 600px; 
+      transition: opacity 0.3s; 
+      font-weight: 800; /* bolder subtitle */
+    }
+
+    .hero-button { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #000; padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: bold; text-decoration: none; margin-top: 1rem; display: inline-block; }
+
+    /* Section Styling */
+    .section { padding: 5rem 2rem; text-align: center; background: rgba(0,0,0,0.85); }
+    .section-title { font-size: 3rem; margin-bottom: 2rem; text-shadow: 0 0 20px var(--primary); color: var(--primary); }
+
+    .grid { display: grid; gap: 2rem; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { background: rgba(0,0,0,0.7); border-radius: 8px; overflow: hidden; text-align: left; }
+    .card img { width: 100%; display: block; }
+    .card-content { padding: 1rem; }
+    .card-title { font-size: 1.3rem; font-weight: bold; color: var(--foreground); }
+    .card-text { font-size: 0.95rem; color: #ccc; }
+
+    .videos { display: flex; justify-content: center; margin-top: 2rem; }
+    .videos iframe { width: 80%; max-width: 800px; height: 450px; border-radius: 8px; }
+
+    footer { background: #000; color: #aaa; text-align: center; padding: 1rem; font-size: 0.9rem; margin-top: 0; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navigation">
+    <div class="nav-logo">Voice for Peace</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mission.html">Mission</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="action.html">Take Action</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Voice for Peace</h1>
+      <p class="hero-subtitle">Unite voices from around the world to create lasting peace and understanding in our communities.</p>
+      <a href="action.html" class="hero-button">Join the Movement</a>
+    </div>
+  </section>
+
+  <!-- Voices of Change -->
+  <section class="section">
+    <h2 class="section-title">Voices of Change</h2>
+    <p>Meet inspiring peace advocates around the world who dedicate their lives to harmony and community building.</p>
+  </section>
+
+  <!-- Peace in Action -->
+  <section class="section">
+    <h2 class="section-title">Peace in Action</h2>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-content"><h3 class="card-title">Community Healing</h3><p class="card-text">Local communities coming together for peace dialogues.</p></div></div>
+      <div class="card"><div class="card-content"><h3 class="card-title">Youth Leadership</h3><p class="card-text">Empowering young voices for peaceful change.</p></div></div>
+      <div class="card"><div class="card-content"><h3 class="card-title">Global Impact</h3><p class="card-text">Worldwide initiatives creating lasting peace.</p></div></div>
+    </div>
+
+    <!-- Centered Video -->
+    <div class="videos">
+      <iframe src="https://www.youtube.com/embed/2OEL4P1Rz04" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Voice for Peace | Built with love for a better world 🌍</p>
+  </footer>
+
+  <!-- Scroll Effect Script -->
+  <script>
+    window.addEventListener("scroll", () => {
+      const title = document.querySelector(".hero-title");
+      const subtitle = document.querySelector(".hero-subtitle");
+      const scrollY = window.scrollY;
+      title.style.transform = `translateY(${-scrollY * 0.2}px)`;
+      if(scrollY>50){ title.style.fontSize="4.5rem"; title.style.letterSpacing="2px"; } 
+      else{ title.style.fontSize="4rem"; title.style.letterSpacing="0px"; }
+      subtitle.style.opacity = `${1 - scrollY / 300}`;
+    });
+  </script>
+</body>
+</html>
