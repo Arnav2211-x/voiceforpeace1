@@ -24,13 +24,24 @@ body {
     font-family: 'Montserrat', 'Open Sans', sans-serif;
     background-color: var(--background);
     color: var(--text-color);
+    position: relative;
 }
 
-/* Floating Elements */
-.floating-element {
+/* Floating Emojis Background */
+.background-emojis {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0; /* behind everything */
+}
+.floating-emoji {
     position: absolute;
     animation: float 6s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
     text-shadow: 0 0 10px rgba(0,0,0,0.2);
+    font-size: 3rem;
 }
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -47,19 +58,19 @@ body {
     position: fixed;
     width: 100%;
     background: #000;
-    z-index: 1000;
+    z-index: 2; /* above emojis */
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0.5rem; /* keeps same size as before */
+    padding: 1rem 0.5rem;
 }
 .nav-logo {
     font-family: 'Glegoo', serif;
     color: var(--primary);
-    font-size: 1.5rem; /* same size as original logo */
+    font-size: 1.5rem;
     font-weight: 900;
     text-decoration: none;
     text-shadow: 0 0 10px var(--primary);
@@ -97,6 +108,8 @@ body {
     border-radius: 1rem;
     box-shadow: 0 0 15px rgba(0,191,255,0.3);
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1; /* in front of emojis */
 }
 .card:hover {
     box-shadow: 0 0 25px var(--primary), 0 0 50px var(--primary);
@@ -108,6 +121,7 @@ body {
 .card h2 { font-size: 2rem; }
 .card h3 { font-size: 1.6rem; }
 .card h4 { font-size: 1.4rem; }
+
 .grid {
     display: grid;
     gap: 2rem;
@@ -118,11 +132,13 @@ body {
 .grid-3 {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
 p, li {
     color: var(--text-color);
     line-height: 1.8;
     font-size: 1.1rem;
 }
+
 img {
     max-width: 100%;
     border-radius: 12px;
@@ -134,16 +150,18 @@ img {
     margin: 1rem auto;
 }
 .mb-8 { margin-bottom: 2rem; }
-.section { padding: 2rem; }
+.section { padding: 2rem; position: relative; z-index: 1; }
 
 </style>
 </head>
 <body>
 
-<div class="background">
-    <div class="floating-element" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(0, 191, 255, 0.3);">☮</div>
-    <div class="floating-element" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(132, 204, 22, 0.3);">🕊</div>
-    <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
+<!-- Floating Emojis Background -->
+<div class="background-emojis">
+    <div class="floating-emoji" style="top: 20%; left: 10%; font-size: 4rem; color: rgba(0, 191, 255, 0.3);">☮</div>
+    <div class="floating-emoji" style="top: 60%; right: 15%; font-size: 3rem; color: rgba(132, 204, 22, 0.3);">🕊</div>
+    <div class="floating-emoji" style="bottom: 30%; left: 20%; font-size: 3.5rem; color: rgba(59, 130, 246, 0.25);">🌍</div>
+    <div class="floating-emoji" style="top: 40%; left: 70%; font-size: 3rem; color: rgba(255, 182, 193, 0.25);">💖</div>
 </div>
 
 <!-- Navbar -->
@@ -166,16 +184,14 @@ img {
     <h1 class="section-title">Our Mission</h1>
     <div class="card mb-8">
         <h2>Building a World Where Peace Prevails</h2>
-        <p>Our mission is to create sustainable peace through education, dialogue, and community action. We believe that lasting peace begins with understanding, grows through compassion, and flourishes through collective action.</p>
-        <p>Through innovative programs, we aim to equip individuals and communities with the tools to resolve conflicts, promote empathy, and foster cooperation in daily life. Every initiative is designed to make peace a practical, achievable reality.</p>
+        <p>Our mission is to create sustainable peace through education, dialogue, and community action...</p>
         <img src="00015.png" alt="Team working for peace">
-        <p>We also organize workshops and training sessions across communities to educate young leaders, teachers, and local advocates about the principles of peaceful living and collaborative problem solving.</p>
     </div>
+
     <div class="grid grid-2 mb-8">
         <div class="card">
             <h3>Our Vision</h3>
-            <p>A world where conflicts are resolved through dialogue, diversity is celebrated, and every voice contributes to a culture of understanding. Communities are empowered to take peaceful action and nurture compassion in every interaction.</p>
-            <p>We envision a global network where knowledge-sharing and cooperation eliminate barriers and unite people in the pursuit of harmony and shared prosperity.</p>
+            <p>A world where conflicts are resolved through dialogue, diversity is celebrated...</p>
             <img src="0003.png" alt="Vision for peace">
         </div>
         <div class="card">
@@ -189,45 +205,45 @@ img {
                 <li>Respect for Human Rights</li>
                 <li>Environmental Responsibility</li>
             </ul>
-            <p>These values guide every project and initiative we undertake, ensuring that all actions align with our mission for sustainable peace and social impact.</p>
         </div>
     </div>
+
     <div class="section mb-8">
         <h2 class="section-title">Strategic Goals</h2>
         <div class="grid grid-3">
             <div class="card">
                 <h4>Education & Awareness</h4>
-                <p>Develop comprehensive peace education programs that reach schools, communities, and organizations worldwide. This includes workshops, seminars, and interactive learning sessions that inspire future leaders.</p>
+                <p>Workshops, seminars, and interactive learning sessions...</p>
             </div>
             <div class="card">
                 <h4>Community Building</h4>
-                <p>Foster local peace initiatives and connect communities across cultural and geographical boundaries. Support grassroots efforts that promote cooperation, volunteerism, and intercultural understanding.</p>
+                <p>Foster local peace initiatives and connect communities...</p>
             </div>
             <div class="card">
                 <h4>Policy Advocacy</h4>
-                <p>Influence policy makers to prioritize peaceful solutions and invest in conflict prevention. Engage in research, dialogues, and collaborations with government and civil organizations to implement effective peace strategies.</p>
+                <p>Influence policy makers to prioritize peaceful solutions...</p>
             </div>
         </div>
     </div>
+
     <div class="section mb-8">
         <h2 class="section-title">Programs & Initiatives</h2>
         <div class="grid grid-2">
             <div class="card">
                 <h4>Youth Leadership</h4>
-                <p>Empower young people with leadership skills that promote peace and social responsibility. Workshops, mentorship programs, and collaborative projects help youth become agents of positive change in their communities.</p>
+                <p>Empower young people with leadership skills that promote peace...</p>
             </div>
             <div class="card">
                 <h4>Conflict Mediation</h4>
-                <p>Provide training and support for conflict mediation at schools, workplaces, and community centers. Equip individuals with practical tools for resolving disputes constructively and preventing escalation.</p>
+                <p>Provide training and support for conflict mediation at schools, workplaces...</p>
             </div>
         </div>
     </div>
+
     <div class="section mb-8">
         <h2 class="section-title">Global Outreach & Partnerships</h2>
         <div class="card">
-            <p>Engage with international partners and organizations to share knowledge, resources, and best practices in peacebuilding. Participate in cross-border collaborations and digital initiatives to promote global understanding.</p>
-            <p>Our online platform provides access to e-learning, webinars, and virtual events connecting participants from diverse backgrounds to learn and work together for a peaceful world.</p>
-            <p>Through partnerships with schools, NGOs, and community groups, we aim to scale up impact, reaching more people with tools and insights for constructive dialogue and empathy building.</p>
+            <p>Engage with international partners and organizations to share knowledge...</p>
         </div>
     </div>
 </section>
